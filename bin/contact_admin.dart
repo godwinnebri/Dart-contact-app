@@ -1,18 +1,7 @@
 import 'dart:io';
 
-class Contact {
-  final String name;
-  final String phone;
-
-  Contact({
-    required this.name,
-    required this.phone,
-  });
-
-  String contactDetail() {
-    return 'Name: $name, Phone: $phone';
-  }
-}
+import 'contact_model.dart';
+import 'service.dart';
 
 class ContactsAdmin {
   List<Contact> contactsList = [];
@@ -61,45 +50,6 @@ class ContactsAdmin {
     } else {
       print('Contact list is empty');
       print('---------------------------------');
-    }
-  }
-}
-
-void printMenu() {
-  print('What do you want to do?');
-  print('1. Add contact');
-  print('2. Display contacts');
-  print('3. Delete contact');
-  print('4. Exit');
-  print('Enter your choice:');
-}
-
-int readUserChoice() {
-  final choiceString = stdin.readLineSync() ?? '0';
-  final choice = int.tryParse(choiceString) ?? 0;
-  return choice;
-}
-
-void main() {
-  final contact = ContactsAdmin();
-  while (true) {
-    printMenu();
-    final choice = readUserChoice();
-
-    switch (choice) {
-      case 1:
-        contact.addContact();
-        break;
-      case 2:
-        contact.displayContacts();
-        break;
-      case 3:
-        contact.deleteContact();
-        break;
-      case 4:
-        exit(0);
-      default:
-        print('Please enter a valid option');
     }
   }
 }
